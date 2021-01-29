@@ -18,10 +18,12 @@ namespace SerialBridge
             // Set the read/write timeouts
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
+            /*
             _serialPort.Parity = Parity.None;
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
             _serialPort.Handshake = Handshake.None;
+            */
             _serialPort.DataReceived += new
                 SerialDataReceivedEventHandler(port_DataReceived);
             _serialPort.Open();
