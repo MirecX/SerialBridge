@@ -14,7 +14,8 @@ namespace SerialBridge
             // Allow the user to set the appropriate properties.
             _serialPort.PortName = args[0];
             _serialPort.BaudRate = 115200;
-
+            _serialPort.DtrEnable = true;
+            _serialPort.RtsEnable = true;
             // Set the read/write timeouts
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
