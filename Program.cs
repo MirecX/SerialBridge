@@ -28,7 +28,7 @@ namespace SerialBridge
             {
                 try
                 {
-                    string message = _serialPort.ReadExisting();
+                    string message = _serialPort.ReadLine();
                     if (!string.IsNullOrEmpty(message))
                     {
                         Console.WriteLine(message);

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SerialBridge": {
+      "commandName": "Project",
+      "commandLineArgs": "/dev/ttyUSB0"
+    }
+  }
+}
