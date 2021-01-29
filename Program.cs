@@ -41,7 +41,7 @@ namespace SerialBridge
             }
         }
 
-        private void port_DataReceived(object sender,
+        private static void port_DataReceived(object sender,
                                  SerialDataReceivedEventArgs e)
         {
             // Show all the incoming data in the port's buffer in the output window
