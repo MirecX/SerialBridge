@@ -19,36 +19,17 @@ namespace SerialBridge
             // Set the read/write timeouts
             _serialPort.ReadTimeout = 500;
             _serialPort.WriteTimeout = 500;
-            /*
-            _serialPort.Parity = Parity.None;
-            _serialPort.DataBits = 8;
-            _serialPort.StopBits = StopBits.One;
-            _serialPort.Handshake = Handshake.None;
-            */
             _serialPort.DataReceived += new
                 SerialDataReceivedEventHandler(port_DataReceived);
             _serialPort.Open();
-            while (true)
-            {
-                /*
-                try
-                {
-                    string message = _serialPort.ReadLine();
-                    if (!string.IsNullOrEmpty(message))
-                    {
-                        Console.WriteLine(message);
-                    }
-                }
-                catch (TimeoutException) { }
-                */
-            }
+            while (true) ;
         }
 
         private static void port_DataReceived(object sender,
                                  SerialDataReceivedEventArgs e)
         {
             // Show all the incoming data in the port's buffer in the output window
-            Console.WriteLine("data : " + _serialPort.ReadExisting());
+            Console.Write(_serialPort.ReadExisting());
         }
     }
 }
