@@ -12,7 +12,7 @@ namespace SerialBridge
             // Create a new SerialPort object with default settings.
             _serialPort = new SerialPort();
             // Allow the user to set the appropriate properties.
-            _serialPort.PortName = "COM4";
+            _serialPort.PortName = args[0];
             _serialPort.BaudRate = 115200;
 
             // Set the read/write timeouts
