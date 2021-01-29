@@ -22,10 +22,12 @@ namespace SerialBridge
             _serialPort.DataBits = 8;
             _serialPort.StopBits = StopBits.One;
             _serialPort.Handshake = Handshake.None;
-
+            _serialPort.DataReceived += new
+                SerialDataReceivedEventHandler(port_DataReceived);
             _serialPort.Open();
             while (true)
             {
+                /*
                 try
                 {
                     string message = _serialPort.ReadLine();
@@ -35,7 +37,15 @@ namespace SerialBridge
                     }
                 }
                 catch (TimeoutException) { }
+                */
             }
+        }
+
+        private void port_DataReceived(object sender,
+                                 SerialDataReceivedEventArgs e)
+        {
+            // Show all the incoming data in the port's buffer in the output window
+            Console.WriteLine("data : " + _serialPort.ReadExisting());
         }
     }
 }
