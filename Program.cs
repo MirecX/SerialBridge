@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO.Ports;
+using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace SerialBridge
 {
@@ -11,8 +13,13 @@ namespace SerialBridge
         {
             // Create a new SerialPort object with default settings.
             _serialPort = new SerialPort();
+            var portname = SerialPort.GetPortNames().Where(x=>x.Contains("ACM")).FirstOrDefault();
+            if(string.IsNullOrEmpty(portname))
+            {
+                portname = args[0];
+            }
             // Allow the user to set the appropriate properties.
-            _serialPort.PortName = args[0];
+            _serialPort.PortName = portname;
             _serialPort.BaudRate = 115200;
             _serialPort.DtrEnable = true;
             _serialPort.RtsEnable = true;
@@ -22,7 +29,10 @@ namespace SerialBridge
             _serialPort.DataReceived += new
                 SerialDataReceivedEventHandler(port_DataReceived);
             _serialPort.Open();
-            while (true) ;
+            while (true)
+            {
+                Task.Delay(1000).Wait();
+            }
         }
 
         private static void port_DataReceived(object sender,
